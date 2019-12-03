@@ -47,12 +47,10 @@ each other. Note that no encryption is done here. **This is the implementation f
 
 Now, this communication is made encrypted so that only the intended recipient can read the message. We used something called a public-private key based encryption for this purpose. Very simply put, this is how it works:
 
-    - Say there are two users A and B, and A wants to send a message to B
-    - The message is M
-    - Both A and B will have their own respective public and private key pairs, let’s call for (Kpub A
-    , Kpvt A) for A and (Kpub B , Kpvt B ) for B
-    - As you would have figured, a public key is public, ie. it can be published publicly, but the private key should not be disclosed
-    - For A to send an encrypted message to B, it will encrypt the message on B’s public key, ie. it will
-    send M’ = Kpub B (M). B will then decrypt M’ through its private key, ie. it will obtain M = Kpvt B (M’)
+   * Say there are two users A and B, and A wants to send a message to B
+   * The message is M
+   * Both A and B will have their own respective public and private key pairs, let’s call for (Kpub A      , Kpvt A) for A and (Kpub B , Kpvt B) for B
+   * As you would have figured, a public key is public, ie. it can be published publicly, but the private key should not be disclosed
+   * For A to send an encrypted message to B, it will encrypt the message on B’s public key, ie. it will send M’ = Kpub B (M). B will then decrypt M’ through its private key, ie. it will obtain M = Kpvt B (M’)
 
 
