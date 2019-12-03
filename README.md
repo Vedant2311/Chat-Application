@@ -53,4 +53,24 @@ Now, this communication is made encrypted so that only the intended recipient ca
    * As you would have figured, a public key is public, ie. it can be published publicly, but the private key should not be disclosed
    * For A to send an encrypted message to B, it will encrypt the message on B’s public key, ie. it will send M’ = Kpub B (M). B will then decrypt M’ through its private key, ie. it will obtain M = Kpvt B (M’)
 
+Extended the methods implemented in the client and server applications to encrypt the messages being sent. Used the "RSA" public key algorithm. Also used "base64" encoding to convert binary data into text format. **This is the implementation for the second Server**
 
+## Obtain a hash digest
+
+Although the communication is encrypted, how can message integrity be checked to ensure that the
+message has not been tampered with? This is where signatures come into the picture, and they work
+as follows, in very simplified terms: 
+
+  * A hash method is used to obtain a digest for the encrypted message, such as through MD5 or SHA1 or SHA2: H = hash(M’)
+  * The hash is encrypted on the private key of the sender: H’ = Kpvt A (H) and sent along with the encrypted message (H’, M’) to the recipient
+  * The recipient uses the public key of the sender to check whether it has received the encrypted message correctly, ie. whether hash(M’) is the same as Kpub A (H’)
+
+Extended the methods implemented in the client and server applications to implement this. Used "SHA-256" to obtain the digest. **This is the implementation for the third Server**
+
+## Running the code
+
+* Just use the command 'make' to compile all the files. 
+
+* Then run the command "java mainServer", which has all the three Servers combined. The user will be prompted for a mode: Only 1,2,3 are valid. Else you will receive an error. 
+
+* There is also a code of "mainClass.java", which works the same way for the Clients. Also, note that you need to use the same input number for both of the codes else they will result in random errors! Also, run this code on a different terminal for the different Clients
